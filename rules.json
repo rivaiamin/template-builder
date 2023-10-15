@@ -1,0 +1,45 @@
+{
+    "configs" : {
+        ".ahsa-logo-src": "{{ url( 'storage/'.$configs['SITE_LOGO']) }}",
+        ".ahsa-logo-src-alt": "{{ url( 'storage/'.$configs['SITE_LOGO_ALT']) }}",
+        ".ahsa-name": "{{ url( 'storage/'.$configs['SITE_NAME']) }}",
+        ".ahsa-description": "{{ url( 'storage/'.$configs['SITE_DESCRIPTION']) }}",
+        ".ahsa-adress": "{{ url( 'storage/'.$configs['CONTACT_ADDRESS']) }}",
+        ".ahsa-email": "{{ url( 'storage/'.$configs['CONTACT_EMAIL']) }}",
+        ".ahsa-phone": "{{ url( 'storage/'.$configs['CONTACT_PHONE']) }}",
+        ".ahsa-whatsapp": "{{ url( 'storage/'.$configs['CONTACT_WHATSAPP']) }}",
+        ".ahsa-map-iframe": "{{ url( 'storage/'.$configs['CONTACT_MAP']) }}",
+        ".ahsa-socials" : {
+            "loop": "@foreach ($configs['SOCIALS']['lists'] as $social) \n %s \n @endforeach",
+            "lists": 
+                {
+                    ".ahsa-socials-icon": "{{ $social['icon'] }}",
+                    ".ahsa-socials-text": "{{ $social['label'] }}",
+                    ".ahsa-socials-url": "{{ $social['url'] }}"
+                }
+        }
+        
+    },
+    "sections": {
+        ".ahsa-navbar" : {
+            "pre": "@php\n $navbar = $sections['navbar']['content'];\n @endphp",
+            ".ahsa-navbar-menus": {
+                "loop": "@foreach ($navbar['menus'][0]['lists'] as $list) \n %s \n @endforeach",
+                "lists": {
+                    ".ahsa-navbar-menus-text": "{{ $list['text'] }}",
+                    ".ahsa-navbar-menus-href": "{{ $list['url'] }}"
+                }
+            },
+            ".ahsa-navbar-actions": {
+                "loop": "@foreach ($navbar['actions'][0]['lists'] as $list) \n %s \n @endforeach",
+                "lists": {
+                    ".ahsa-navbar-actions-href": "{{ $list['href'] }}",
+                    ".ahsa-navbar-actions-onclick": "{{ $list['onclick'] }}",
+                    ".ahsa-navbar-actions-icon": "{{ $list['icon'] }}",
+                    ".ahsa-navbar-actions-text": "{{ $list['text'] }}"
+                }
+            }
+        }
+    }
+
+}
